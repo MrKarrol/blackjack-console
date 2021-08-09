@@ -21,7 +21,7 @@ int Card::GetValue() const noexcept
 	switch (m_rank)
 	{
 	case Rank::Ace:
-		return 1;
+		return 11;
 	case Rank::Two:
 		return 2;
 	case Rank::Three:
