@@ -11,12 +11,12 @@ class Hand
 public:
 	~Hand() = default;
 
-	void Add(std::shared_ptr<Card>);
+	void Add(std::unique_ptr<Card>);
 	void Clear();
 	int GetValue() const noexcept;
 
 private:
-	std::vector<std::shared_ptr<Card>> m_cards;
+	std::vector<std::unique_ptr<Card>> m_cards;
 
 };
 
