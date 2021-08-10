@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 
 namespace card
 {
@@ -12,8 +13,6 @@ namespace card
 		Diamonds,
 		Clubs
 	};
-
-	inline std::string SuitToString(Suit suit);
 
 	enum class Rank
 	{
@@ -32,19 +31,18 @@ namespace card
 		Queen,
 		King
 	};
-
-	inline std::string RankToString(Rank rank);
-
 } // end of namespace card
 
 class Card
 {
 public:
 	Card(card::Rank rank, card::Suit suit, bool face_down = false);
+	~Card();
 
 	void Flip() noexcept;
 	int GetValue() const noexcept;
 	std::string ToString() const noexcept;
+	friend std::ostream& operator <<(std::ostream& out, const Card& card);
 
 private:
 	card::Rank m_rank{ card::Rank::NoRank };
@@ -53,3 +51,4 @@ private:
 
 };
 
+std::ostream& operator <<(std::ostream& out, const Card& card);

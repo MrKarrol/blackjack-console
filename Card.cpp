@@ -49,62 +49,82 @@ int Card::GetValue() const noexcept
 	}
 }
 
-std::string Card::ToString() const noexcept
+Card::~Card()
 {
-	using namespace card;
-	return RankToString(m_rank) + " of " + SuitToString(m_suit) + (m_face_down ? "(face down)" : "");
 }
 
-std::string card::SuitToString(Suit suit)
+std::ostream& operator <<(std::ostream& out, const Card& card)
 {
-	switch (suit)
+	if (card.m_face_down)
 	{
-	case Suit::Spades:
-		return "Spades";
-	case Suit::Hearts:
-		return "Hearts";
-	case Suit::Diamonds:
-		return "Diamonds";
-	case Suit::Clubs:
-		return "Clubs";
-	default:
-		std::cerr << "ERROR in SuitToString" << std::endl;
-		return "ERROR";
+		out << "XX";
+		return out;
 	}
-}
 
-std::string card::RankToString(Rank rank)
-{
-	switch (rank)
+	using namespace card;
+	std::string card_string;
+	switch (card.m_rank)
 	{
 	case Rank::Ace:
-		return "Ace";
+		card_string += "A";
+		break;
 	case Rank::Two:
-		return "Two";
+		card_string += "2";
+		break;
 	case Rank::Three:
-		return "Three";
+		card_string += "3";
+		break;
 	case Rank::Four:
-		return "Four";
+		card_string += "4";
+		break;
 	case Rank::Five:
-		return "Five";
+		card_string += "5";
+		break;
 	case Rank::Six:
-		return "Six";
+		card_string += "6";
+		break;
 	case Rank::Seven:
-		return "Seven";
+		card_string += "7";
+		break;
 	case Rank::Eight:
-		return "Eight";
+		card_string += "8";
+		break;
 	case Rank::Nine:
-		return "Nine";
+		card_string += "9";
+		break;
 	case Rank::Ten:
-		return "Ten";
+		card_string += "10";
+		break;
 	case Rank::Jack:
-		return "Jack";
+		card_string += "J";
+		break;
 	case Rank::Queen:
-		return "Queen";
+		card_string += "Q";
+		break;
 	case Rank::King:
-		return "King";
+		card_string += "K";
+		break;
 	default:
-		std::cerr << "ERROR in RankToString" << std::endl;
-		return "ERROR";
+		card_string += "ERROR";
 	}
+
+	switch (card.m_suit)
+	{
+	case Suit::Hearts:
+		card_string += char(3);
+		break;
+	case Suit::Diamonds:
+		card_string += char(4);
+		break;
+	case Suit::Clubs:
+		card_string += char(5);
+		break;
+	case Suit::Spades:
+		card_string += char(6);
+		break;
+	default:
+		card_string += "ERROR";
+	}
+	out << card_string;
+	return out;
 }
