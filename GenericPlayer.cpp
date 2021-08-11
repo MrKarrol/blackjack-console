@@ -1,7 +1,5 @@
 #include "GenericPlayer.h"
 
-#include <iostream>
-
 #include "Card.h"
 
 

@@ -1,9 +1,3 @@
-#include <iostream>
-
-#include <cassert>
-
-#include "Card.h"
-#include "Hand.h"
 #include "Player.h"
 #include "House.h"
 

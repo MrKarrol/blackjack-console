@@ -1,7 +1,5 @@
 #include "Card.h"
 
-#include <iostream>
-
 
 Card::Card(card::Rank rank, card::Suit suit, bool face_down)
 	: m_rank(rank)
