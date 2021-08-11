@@ -67,5 +67,15 @@ int main()
         house.FlipFirstCard();
         std::cout << house << std::endl;
     }
+    // test 4
+    {
+        std::cout << "----- test 3 -----" << std::endl;
+        Player player("Loser");
+        player.Add(card::Rank::Ten, card::Suit::Hearts);
+        player.Add(card::Rank::Ten, card::Suit::Clubs);
+        player.Add(card::Rank::Ten, card::Suit::Diamonds);
+        if (player.GetValue() > 21)
+            player.Bust();
+    }
 
 }

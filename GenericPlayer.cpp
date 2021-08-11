@@ -27,7 +27,7 @@ void GenericPlayer::Bust() const
 
 std::ostream& operator << (std::ostream& out, const GenericPlayer& player)
 {
-	out << "Player: " << player.m_name << " has ";
+	out << "Player " << player.m_name << " has ";
 	for (const auto& card : player.m_cards)
 		out << *card.get() << " ";
 	out << ". Total sum: " << player.GetValue();
