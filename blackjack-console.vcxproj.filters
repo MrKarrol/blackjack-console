@@ -27,12 +27,15 @@
     <ClCompile Include="GenericPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="House.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> main
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">
@@ -44,11 +47,14 @@
     <ClInclude Include="GenericPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="House.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+>>>>>>> main
   </ItemGroup>
 </Project>
