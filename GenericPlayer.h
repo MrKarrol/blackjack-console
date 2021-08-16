@@ -3,6 +3,7 @@
 #include "Hand.h"
 
 #include <string>
+#include <iostream>
 
 
 class GenericPlayer : public Hand
@@ -15,8 +16,11 @@ public:
 	bool IsBoosted() const;
 	void Bust() const;
 
-private:
+	friend std::ostream& operator << (std::ostream& out, const GenericPlayer& player);
+
+protected:
 	const std::string m_name;
 
 };
 
+std::ostream& operator << (std::ostream& out, const GenericPlayer& player);

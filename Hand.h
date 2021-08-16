@@ -3,19 +3,20 @@
 #include <vector>
 #include <memory>
 
+#include "Card.h"
 
-class Card;
 
 class Hand
 {
 public:
-	~Hand() = default;
+	~Hand();
 
 	void Add(std::unique_ptr<Card>);
+	void Add(const card::Rank &, const card::Suit &, bool is_face_down = false);
 	void Clear();
 	int GetValue() const noexcept;
 
-private:
+protected:
 	std::vector<std::unique_ptr<Card>> m_cards;
 
 };

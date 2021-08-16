@@ -1,39 +1,75 @@
-#include <iostream>
-
-#include <cassert>
-
-#include "Card.h"
-#include "Hand.h"
+#include "Player.h"
+#include "House.h"
 
 
 int main()
 {
     // test 1
     {
-        Hand hand;
-        hand.Add(std::make_unique<Card>(card::Rank::Nine, card::Suit::Diamonds));
-        hand.Add(std::make_unique<Card>(card::Rank::Ace, card::Suit::Clubs));
-        assert(hand.GetValue() == 20);
+        std::cout << "----- test 1 -----" << std::endl;
+        {
+            Card card(card::Rank::Ace, card::Suit::Clubs, true);
+            std::cout << card << " ";
+            card.Flip();
+            std::cout << card << " ";
+        }
+        {
+            Card card(card::Rank::Jack, card::Suit::Diamonds);
+            std::cout << card << " ";
+        }
+        {
+            Card card(card::Rank::Ten, card::Suit::Spades);
+            std::cout << card << " ";
+        }
+        {
+            Card card(card::Rank::Queen, card::Suit::Hearts);
+            std::cout << card << " ";
+        }
+        {
+            Card card(card::Rank::King, card::Suit::Diamonds);
+            std::cout << card << std::endl;
+        }
     }
     // test 2
     {
-        Hand hand;
-        hand.Add(std::make_unique<Card>(card::Rank::Ace, card::Suit::Clubs));
-        hand.Add(std::make_unique<Card>(card::Rank::Nine, card::Suit::Diamonds));
-        assert(hand.GetValue() == 20);
+        std::cout << "----- test 2 -----" << std::endl;
+        Player player("CoolJoker");
+        player.Add(card::Rank::Ace, card::Suit::Spades);
+        player.Add(card::Rank::Two, card::Suit::Hearts);
+        std::cout << player << std::endl;
+        if (player.IsHitting())
+        {
+            player.Add(card::Rank::Jack, card::Suit::Diamonds);
+            std::cout << player << std::endl;
+        }
+        player.Win();
+        player.Lose();
+        player.Push();
     }
-    // task 3
+    // test 3
     {
-        Hand hand;
-        hand.Add(std::make_unique<Card>(card::Rank::Ace, card::Suit::Diamonds));
-        hand.Add(std::make_unique<Card>(card::Rank::Ten, card::Suit::Diamonds));
-        assert(hand.GetValue() == 11);
+        std::cout << "----- test 3 -----" << std::endl;
+        House house;
+        house.Add(card::Rank::Ace, card::Suit::Spades, true);
+        house.Add(card::Rank::Two, card::Suit::Hearts);
+        std::cout << house << std::endl;
+        if (house.IsHitting())
+        {
+            house.Add(card::Rank::Jack, card::Suit::Diamonds);
+            std::cout << house << std::endl;
+        }
+        house.FlipFirstCard();
+        std::cout << house << std::endl;
     }
-    // task 4
+    // test 4
     {
-        Hand hand;
-        hand.Add(std::make_unique<Card>(card::Rank::Ten, card::Suit::Spades));
-        hand.Add(std::make_unique<Card>(card::Rank::Ace, card::Suit::Hearts));
-        assert(hand.GetValue() == 11);
+        std::cout << "----- test 3 -----" << std::endl;
+        Player player("Loser");
+        player.Add(card::Rank::Ten, card::Suit::Hearts);
+        player.Add(card::Rank::Ten, card::Suit::Clubs);
+        player.Add(card::Rank::Ten, card::Suit::Diamonds);
+        if (player.GetValue() > 21)
+            player.Bust();
     }
+
 }

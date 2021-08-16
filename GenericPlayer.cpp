@@ -1,7 +1,5 @@
 #include "GenericPlayer.h"
 
-#include <iostream>
-
 #include "Card.h"
 
 
@@ -23,4 +21,13 @@ bool GenericPlayer::IsBoosted() const
 void GenericPlayer::Bust() const
 {
     std::cout << "Player " << m_name << " busted. Total score: " << GetValue() << std::endl;
+}
+
+std::ostream& operator << (std::ostream& out, const GenericPlayer& player)
+{
+	out << "Player " << player.m_name << " has ";
+	for (const auto& card : player.m_cards)
+		out << *card.get() << " ";
+	out << ". Total sum: " << player.GetValue();
+	return out;
 }
