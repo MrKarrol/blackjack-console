@@ -12,7 +12,7 @@ public:
 	~Hand();
 
 	void Add(std::unique_ptr<Card>);
-	void Add(card::Rank, card::Suit, bool is_face_down = false);
+	void Add(const card::Rank &, const card::Suit &, bool is_face_down = false);
 	void Clear();
 	int GetValue() const noexcept;
 

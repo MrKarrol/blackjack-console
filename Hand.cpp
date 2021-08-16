@@ -12,7 +12,7 @@ void Hand::Add(std::unique_ptr<Card> card)
 	m_cards.emplace_back(std::move(card));
 }
 
-void Hand::Add(card::Rank rank, card::Suit suit, bool is_face_down)
+void Hand::Add(const card::Rank &rank, const card::Suit &suit, bool is_face_down)
 {
 	m_cards.emplace_back(std::make_unique<Card>(rank, suit, is_face_down));
 }
