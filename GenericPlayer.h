@@ -15,6 +15,7 @@ public:
 	virtual bool IsHitting() const = 0;
 	bool IsBoosted() const;
 	void Bust() const;
+	const std::string &GetName() const noexcept;
 
 	friend std::ostream& operator << (std::ostream& out, const GenericPlayer& player);
 

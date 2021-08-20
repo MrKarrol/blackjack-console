@@ -10,10 +10,6 @@ Hand::~Hand()
 void Hand::Add(std::unique_ptr<Card> card)
 {
 	m_cards.emplace_back(std::move(card));
-	std::cout << "hand" << std::endl;
-	for (const auto& card : m_cards)
-		std::cout << *card.get() << " ";
-	std::cout << std::endl;
 }
 
 void Hand::Add(const card::Rank &rank, const card::Suit &suit, bool is_face_down)

@@ -9,11 +9,6 @@
 Deck::Deck()
 {
 	Populate();
-	Shuffle();
-	std::cout << m_cards.size() << std::endl;
-	for (const auto& card : m_cards)
-		std::cout << *card.get() << " ";
-	std::cout << std::endl;
 }
 
 template<typename T, typename ... Ts>
@@ -27,6 +22,7 @@ void AddCards(T& hand, Ts ... ts)
 
 void Deck::Populate()
 {
+	Clear();
 	using namespace card;
 	AddCards(*this, Rank::Ace, Rank::Two, Rank::Three, Rank::Four, Rank::Five,
 		Rank::Six, Rank::Seven, Rank::Eight, Rank::Nine, Rank::Ten,
@@ -45,10 +41,6 @@ void Deck::Deal(Hand& hand)
 {
 	hand.Add(std::move(m_cards.back()));
 	m_cards.pop_back();
-	std::cout << m_cards.size() << std::endl;
-	for (const auto& card : m_cards)
-		std::cout << *card.get() << " ";
-	std::cout << std::endl;
 }
 
 void Deck::AdditionalCards(GenericPlayer& player)
@@ -56,6 +48,7 @@ void Deck::AdditionalCards(GenericPlayer& player)
 	while (player.IsHitting())
 	{
 		Deal(player);
+		std::cout << player << std::endl;
 		if (player.IsBoosted())
 		{
 			player.Bust();
