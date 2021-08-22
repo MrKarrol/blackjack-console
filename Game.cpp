@@ -5,10 +5,11 @@
 #include "Player.h"
 
 
-Game::Game(const std::vector<std::string> players_names)
+Game::Game(const std::vector<std::string> &players_names)
 	: m_deck(std::make_unique<Deck>())
 	, m_house(std::make_unique<House>())
 {
+	m_players.reserve(players_names.size());
 	for (const auto& name : players_names)
 		m_players.push_back(std::make_unique<Player>(name));
 

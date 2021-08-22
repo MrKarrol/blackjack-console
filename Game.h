@@ -11,8 +11,10 @@ class Player;
 class Game
 {
 public:
-	explicit Game(const std::vector<std::string> players_names);
+	explicit Game(const std::vector<std::string> &players_names);
 	~Game();
+	Game(const Game&) = default;
+	Game(Game&&) = default;
 	void play();
 
 private:

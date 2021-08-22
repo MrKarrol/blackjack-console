@@ -12,7 +12,7 @@ Deck::Deck()
 }
 
 template<typename T, typename ... Ts>
-void AddCards(T& hand, Ts ... ts)
+void AddCards(T&& hand, Ts ... ts)
 {
 	(hand.Add(ts, card::Suit::Clubs), ...);
 	(hand.Add(ts, card::Suit::Diamonds), ...);
