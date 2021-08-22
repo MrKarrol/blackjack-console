@@ -23,11 +23,16 @@ void GenericPlayer::Bust() const
     std::cout << "Player " << m_name << " busted. Total score: " << GetValue() << std::endl;
 }
 
+const std::string& GenericPlayer::GetName() const noexcept
+{
+	return m_name;
+}
+
 std::ostream& operator << (std::ostream& out, const GenericPlayer& player)
 {
 	out << "Player " << player.m_name << " has ";
 	for (const auto& card : player.m_cards)
 		out << *card.get() << " ";
-	out << ". Total sum: " << player.GetValue();
+	out << ".";
 	return out;
 }

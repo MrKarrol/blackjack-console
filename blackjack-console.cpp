@@ -1,75 +1,50 @@
-#include "Player.h"
-#include "House.h"
+#include "Game.h"
+
+#include <iostream>
 
 
 int main()
 {
-    // test 1
+    bool wanna_play = false;
     {
-        std::cout << "----- test 1 -----" << std::endl;
+        std::cout << "Hello here, in our casino! Here is blackjack table. Wanna play? [y/n]" << std::endl;
+        char answer = 'n';
+        std::cin >> answer;
+        std::cin.ignore();
+        switch (answer)
         {
-            Card card(card::Rank::Ace, card::Suit::Clubs, true);
-            std::cout << card << " ";
-            card.Flip();
-            std::cout << card << " ";
-        }
-        {
-            Card card(card::Rank::Jack, card::Suit::Diamonds);
-            std::cout << card << " ";
-        }
-        {
-            Card card(card::Rank::Ten, card::Suit::Spades);
-            std::cout << card << " ";
-        }
-        {
-            Card card(card::Rank::Queen, card::Suit::Hearts);
-            std::cout << card << " ";
-        }
-        {
-            Card card(card::Rank::King, card::Suit::Diamonds);
-            std::cout << card << std::endl;
+        case 'y':
+            wanna_play = true;
+            break;
+        default:
+            break;
         }
     }
-    // test 2
+    
+    if (wanna_play)
     {
-        std::cout << "----- test 2 -----" << std::endl;
-        Player player("CoolJoker");
-        player.Add(card::Rank::Ace, card::Suit::Spades);
-        player.Add(card::Rank::Two, card::Suit::Hearts);
-        std::cout << player << std::endl;
-        if (player.IsHitting())
-        {
-            player.Add(card::Rank::Jack, card::Suit::Diamonds);
-            std::cout << player << std::endl;
-        }
-        player.Win();
-        player.Lose();
-        player.Push();
-    }
-    // test 3
-    {
-        std::cout << "----- test 3 -----" << std::endl;
-        House house;
-        house.Add(card::Rank::Ace, card::Suit::Spades, true);
-        house.Add(card::Rank::Two, card::Suit::Hearts);
-        std::cout << house << std::endl;
-        if (house.IsHitting())
-        {
-            house.Add(card::Rank::Jack, card::Suit::Diamonds);
-            std::cout << house << std::endl;
-        }
-        house.FlipFirstCard();
-        std::cout << house << std::endl;
-    }
-    // test 4
-    {
-        std::cout << "----- test 3 -----" << std::endl;
-        Player player("Loser");
-        player.Add(card::Rank::Ten, card::Suit::Hearts);
-        player.Add(card::Rank::Ten, card::Suit::Clubs);
-        player.Add(card::Rank::Ten, card::Suit::Diamonds);
-        if (player.GetValue() > 21)
-            player.Bust();
-    }
+        Game game({ "Mike" });
 
+        game.play();
+
+        bool to_continue = true;
+        while (to_continue)
+        {
+            std::cout << "Do you want another play? [y/n]" << std::endl;
+            char answer = 'n';
+            std::cin >> answer;
+            std::cin.ignore();
+            switch (answer)
+            {
+            case 'y':
+                system("cls");
+                game.play();
+                break;
+            default:
+                to_continue = false;
+            }
+        }
+    }
+    
+    std::cout << "Thank you for playing in our casino. Welcome back anytime!!" << std::endl;
 }
